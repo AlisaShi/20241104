@@ -6,6 +6,11 @@
 </head>
 <body>
     <h1>註冊</h1>
+    
+    <?php if (isset($_GET['error'])): ?>
+        <p style="color: red;"><?php echo htmlspecialchars($_GET['error']); ?></p>
+    <?php endif; ?>
+    
     <form action="register_action.php" method="post">
         <label for="username">用戶名稱：</label>
         <input type="text" id="username" name="username" required><br>

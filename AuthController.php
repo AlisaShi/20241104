@@ -1,16 +1,26 @@
 <?php
 class AuthController {
+    private $db;
+
+    public function __construct() {
+        // 初始化資料庫連線
+        $this->db = new mysqli('localhost', 'root', '', '20241104');
+
+        // 檢查連線是否成功
+        if ($this->db->connect_error) {
+            die("資料庫連線失敗: " . $this->db->connect_error);
+        }
+    }
 
     // 註冊功能
     public function register($username, $password, $email) {
         // 密碼哈希化
         $password_hash = password_hash($password, PASSWORD_DEFAULT);
 
-        // 連接資料庫並插入資料
-        $db = new mysqli('localhost', 'root', 'password', 'delivery_app');
-        $stmt = $db->prepare("INSERT INTO users (username, password_hash, email, role) VALUES (?, ?, ?, 'user')");
+        // 準備 SQL 語句，並進行插入操作
+        $stmt = $this->db->prepare("INSERT INTO users (username, password_hash, email, role) VALUES (?, ?, ?, 'user')");
         $stmt->bind_param("sss", $username, $password_hash, $email);
-        
+
         if ($stmt->execute()) {
             return "註冊成功";
         } else {
@@ -20,9 +30,8 @@ class AuthController {
 
     // 登入功能
     public function login($username, $password) {
-        // 從資料庫中檢索用戶信息
-        $db = new mysqli('localhost', 'root', 'password', 'delivery_app');
-        $stmt = $db->prepare("SELECT user_id, password_hash, role FROM users WHERE username = ?");
+        // 準備 SQL 語句，並檢索用戶資訊
+        $stmt = $this->db->prepare("SELECT user_id, password_hash, role FROM users WHERE username = ?");
         $stmt->bind_param("s", $username);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -48,6 +57,11 @@ class AuthController {
         session_unset();
         session_destroy();
         return "登出成功";
+    }
+
+    // 關閉資料庫連線
+    public function __destruct() {
+        $this->db->close();
     }
 }
 ?>
