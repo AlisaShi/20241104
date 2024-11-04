@@ -1,0 +1,180 @@
+food-delivery/
+├── config/
+│   ├── config.php           # Main configuration file
+│   ├── database.php         # Database connection configuration
+│   ├── mail.php            # Email configuration
+│   └── routes.php          # Route definitions
+│
+├── public/                  # Public accessible files
+│   ├── index.php           # Main entry point
+│   ├── assets/
+│   │   ├── css/
+│   │   │   ├── style.css
+│   │   │   ├── tailwind.css
+│   │   │   └── responsive.css
+│   │   ├── js/
+│   │   │   ├── main.js     # Main JavaScript file
+│   │   │   ├── auth.js     # Authentication related functions
+│   │   │   ├── cart.js     # Shopping cart functions
+│   │   │   ├── orders.js   # Order management functions
+│   │   │   ├── reviews.js  # Review system functions
+│   │   │   └── map.js      # Delivery tracking map
+│   │   └── images/
+│   │       ├── logo.png
+│   │       └── defaults/
+│   │           ├── avatar.png
+│   │           └── restaurant.png
+│   │
+│   └── uploads/            # For restaurant images and menu items
+│       ├── restaurants/
+│       ├── menu-items/
+│       └── profiles/
+│
+├── src/
+│   ├── Controllers/        # Controller classes
+│   │   ├── AuthController.php
+│   │   ├── CartController.php
+│   │   ├── OrderController.php
+│   │   ├── PaymentController.php
+│   │   ├── RestaurantController.php
+│   │   ├── ReviewController.php
+│   │   ├── UserController.php
+│   │   └── DeliveryController.php
+│   │
+│   ├── Models/            # Model classes
+│   │   ├── User.php
+│   │   ├── Restaurant.php
+│   │   ├── MenuItem.php
+│   │   ├── Cart.php
+│   │   ├── Order.php
+│   │   ├── Payment.php
+│   │   ├── Review.php
+│   │   ├── DeliveryDriver.php
+│   │   ├── Address.php
+│   │   └── Category.php
+│   │
+│   ├── Services/         # Business logic services
+│   │   ├── UserService.php
+│   │   ├── CartService.php
+│   │   ├── OrderService.php
+│   │   ├── PaymentService.php
+│   │   ├── ReviewService.php
+│   │   ├── NotificationService.php
+│   │   ├── DeliveryService.php
+│   │   └── GeolocationService.php
+│   │
+│   ├── Middleware/       # Request middleware
+│   │   ├── AuthMiddleware.php
+│   │   ├── RoleMiddleware.php
+│   │   └── ApiMiddleware.php
+│   │
+│   └── Utils/           # Utility classes
+│       ├── Database.php
+│       ├── Session.php
+│       ├── Validator.php
+│       ├── Response.php
+│       ├── Logger.php
+│       ├── Mailer.php
+│       └── FileUploader.php
+│
+├── api/                 # API endpoints
+│   ├── index.php       # API router
+│   ├── middleware/     # API specific middleware
+│   │   └── auth.php
+│   └── endpoints/
+│       ├── auth.php
+│       ├── restaurants.php
+│       ├── cart.php
+│       ├── orders.php
+│       ├── payments.php
+│       ├── reviews.php
+│       └── delivery.php
+│
+├── views/              # Frontend templates
+│   ├── layouts/
+│   │   ├── main.php    # Main layout template
+│   │   ├── admin.php   # Admin panel layout
+│   │   └── email.php   # Email template layout
+│   │
+│   ├── components/    # Reusable UI components
+│   │   ├── header.php
+│   │   ├── footer.php
+│   │   ├── cart-item.php
+│   │   ├── restaurant-card.php
+│   │   ├── menu-item.php
+│   │   ├── review-form.php
+│   │   ├── pagination.php
+│   │   └── alert.php
+│   │
+│   ├── auth/
+│   │   ├── login.php
+│   │   ├── register.php
+│   │   ├── forgot-password.php
+│   │   └── reset-password.php
+│   │
+│   ├── restaurants/
+│   │   ├── index.php
+│   │   ├── show.php
+│   │   ├── menu.php
+│   │   └── search.php
+│   │
+│   ├── cart/
+│   │   └── index.php
+│   │
+│   ├── orders/
+│   │   ├── index.php
+│   │   ├── show.php
+│   │   └── track.php
+│   │
+│   ├── user/
+│   │   ├── profile.php
+│   │   ├── addresses.php
+│   │   └── orders.php
+│   │
+│   ├── admin/
+│   │   ├── dashboard.php
+│   │   ├── restaurants/
+│   │   ├── users/
+│   │   └── orders/
+│   │
+│   └── reviews/
+│       ├── create.php
+│       └── index.php
+│
+├── tests/             # Unit and integration tests
+│   ├── Unit/
+│   │   ├── UserTest.php
+│   │   ├── CartTest.php
+│   │   ├── OrderTest.php
+│   │   └── PaymentTest.php
+│   │
+│   ├── Integration/
+│   │   ├── AuthTest.php
+│   │   ├── OrderProcessTest.php
+│   │   └── DeliveryTest.php
+│   │
+│   └── Fixtures/     # Test data fixtures
+│       ├── users.php
+│       └── restaurants.php
+│
+├── database/         # Database related files
+│   ├── migrations/   # Database migrations
+│   │   ├── 001_create_users_table.php
+│   │   └── 002_create_restaurants_table.php
+│   │
+│   └── seeds/       # Database seeders
+│       ├── UserSeeder.php
+│       └── RestaurantSeeder.php
+│
+├── vendor/           # Composer dependencies
+│
+├── logs/            # Application logs
+│   ├── error.log
+│   └── access.log
+│
+├── .env.example     # Environment variables example
+├── .gitignore       # Git ignore file
+├── composer.json    # Composer configuration
+├── phpunit.xml     # PHPUnit configuration
+├── README.md        # Project documentation
+└── database.sql     # Database schema
